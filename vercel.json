@@ -11,9 +11,5 @@
       "src": "/(.*)",
       "dest": "api/index.py"
     }
-  ],
-  "includeFiles": [
-    "wine_model.joblib",
-    "wine_scaler.joblib"
   ]
 }
