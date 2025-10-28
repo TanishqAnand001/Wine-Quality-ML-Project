@@ -2,8 +2,7 @@ import streamlit as st
 import requests
 import json
 
-# IMPORTANT: Paste your Vercel API URL here
-API_URL = "https://wine-quality-ml-project.vercel.app/predict"
+API_URL = "https://your-app-name.vercel.app/predict"
 
 st.set_page_config(layout="wide")
 st.title("🍷 Red Wine Quality Predictor")
@@ -11,25 +10,31 @@ st.write("Input the chemical properties of a red wine to predict its quality.")
 
 st.sidebar.header("Wine Features")
 
+
 def get_user_inputs():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        fixed_acidity = st.slider("Fixed Acidity", 4.0, 16.0, 7.4, 0.1)
-        volatile_acidity = st.slider("Volatile Acidity", 0.1, 1.6, 0.7, 0.01)
-        citric_acid = st.slider("Citric Acid", 0.0, 1.0, 0.0, 0.01)
-        residual_sugar = st.slider("Residual Sugar", 0.9, 16.0, 1.9, 0.1)
+        fixed_acidity = st.number_input("Fixed Acidity", min_value=4.0, max_value=16.0, value=7.4, step=0.1,
+                                        format="%.1f")
+        volatile_acidity = st.number_input("Volatile Acidity", min_value=0.1, max_value=1.6, value=0.7, step=0.01,
+                                           format="%.2f")
+        citric_acid = st.number_input("Citric Acid", min_value=0.0, max_value=1.0, value=0.0, step=0.01, format="%.2f")
+        residual_sugar = st.number_input("Residual Sugar", min_value=0.9, max_value=16.0, value=1.9, step=0.1,
+                                         format="%.1f")
 
     with col2:
-        chlorides = st.slider("Chlorides", 0.01, 0.62, 0.076, 0.001)
-        free_sulfur = st.slider("Free Sulfur Dioxide", 1.0, 72.0, 11.0, 1.0)
-        total_sulfur = st.slider("Total Sulfur Dioxide", 6.0, 289.0, 34.0, 1.0)
-        density = st.slider("Density", 0.990, 1.004, 0.9978, 0.0001, format="%.4f")
+        chlorides = st.number_input("Chlorides", min_value=0.01, max_value=0.62, value=0.076, step=0.001, format="%.3f")
+        free_sulfur = st.number_input("Free Sulfur Dioxide", min_value=1.0, max_value=72.0, value=11.0, step=1.0,
+                                      format="%.0f")
+        total_sulfur = st.number_input("Total Sulfur Dioxide", min_value=6.0, max_value=289.0, value=34.0, step=1.0,
+                                       format="%.0f")
+        density = st.number_input("Density", min_value=0.990, max_value=1.004, value=0.9978, step=0.0001, format="%.4f")
 
     with col3:
-        ph = st.slider("pH", 2.7, 4.0, 3.51, 0.01)
-        sulphates = st.slider("Sulphates", 0.3, 2.0, 0.56, 0.01)
-        alcohol = st.slider("Alcohol", 8.4, 15.0, 9.4, 0.1)
+        ph = st.number_input("pH", min_value=2.7, max_value=4.0, value=3.51, step=0.01, format="%.2f")
+        sulphates = st.number_input("Sulphates", min_value=0.3, max_value=2.0, value=0.56, step=0.01, format="%.2f")
+        alcohol = st.number_input("Alcohol", min_value=8.4, max_value=15.0, value=9.4, step=0.1, format="%.1f")
 
     data = {
         "fixed acidity": fixed_acidity,
@@ -46,6 +51,7 @@ def get_user_inputs():
     }
 
     return data
+
 
 input_data = get_user_inputs()
 
