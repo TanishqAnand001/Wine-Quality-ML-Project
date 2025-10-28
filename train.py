@@ -30,7 +30,7 @@ model.fit(X_train_scaled, y_train)
 preds = model.predict(X_test_scaled)
 print(f"Model Accuracy: {accuracy_score(y_test, preds)}")
 
-joblib.dump(model, 'wine_model.joblib')
-joblib.dump(scaler, 'wine_scaler.joblib')
+joblib.dump(model, 'api/wine_model.joblib')
+joblib.dump(scaler, 'api/wine_scaler.joblib')
 
 print("Model and scaler saved as wine_model.joblib and wine_scaler.joblib")

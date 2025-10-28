@@ -7,8 +7,8 @@ import os
 app = Flask(__name__)
 
 try:
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'wine_model.joblib')
-    scaler_path = os.path.join(os.path.dirname(__file__), '..', 'wine_scaler.joblib')
+    model_path = os.path.join(os.path.dirname(__file__), 'wine_model.joblib')
+    scaler_path = os.path.join(os.path.dirname(__file__), 'wine_scaler.joblib')
 
     model = joblib.load(model_path)
     scaler = joblib.load(scaler_path)
