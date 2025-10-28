@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import json
 
-API_URL = "https://your-app-name.vercel.app/predict"
+API_URL = "https://wine-quality-ml-project.vercel.app/predict"
 
 st.set_page_config(layout="wide")
 st.title("🍷 Red Wine Quality Predictor")
